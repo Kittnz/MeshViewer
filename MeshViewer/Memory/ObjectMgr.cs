@@ -134,7 +134,7 @@ namespace MeshViewer.Memory
         {
             // 8B 34 8A 8B 0D ?? ?? ?? ?? 89 81 ?? ?? ?? ?? 8B 15 ?? ?? ?? ??
             // http://i.imgur.com/LIGX6AY.png
-            _currentManager = Game.Read<IntPtr>(Game.Read<int>(0x009BE7E0) + 0x463C, true);
+            _currentManager = Game.Read<IntPtr>(Game.Read<int>(0x00C79CE0) + 0x2ED0, true);
             _localGUID = Game.Read<ulong>(_currentManager + 0xC8, true);
 
             CurrentMap = Game.Read<int>(_currentManager + 0xD4, true);
@@ -194,7 +194,7 @@ namespace MeshViewer.Memory
         }
 
         // Script_IsLoggedIn
-        public bool IsLoggedIn => Game.Read<byte>(0x00ED7427 - 0x400000) == 0;
+        public bool IsLoggedIn => Game.Read<byte>(0x00BEBA40 - 0x400000) == 0;
 
         private int _currentMapID;
 

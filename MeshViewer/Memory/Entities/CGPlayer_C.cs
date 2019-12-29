@@ -24,14 +24,14 @@ namespace MeshViewer.Memory.Entities
         {
             get
             {
-                var maskOffset = Game.Read<int>(0x9980B0 + 0x024);
+                var maskOffset = Game.Read<int>(0xC5D938 + 0x024);
                 if (maskOffset == -1)
                     return "Unknown";
 
                 var objectGuid = OBJECT_FIELD_GUID.Value;
 
                 // Get a pointer to the start of the linked list
-                var ptr = Game.Read<int>(0x9980B0 + 0x01C);
+                var ptr = Game.Read<int>(0xC5D938 + 0x01C);
                 maskOffset &= (int)objectGuid;
                 maskOffset += maskOffset * 2;
                 maskOffset = ptr + maskOffset * 4 + 4;
@@ -40,9 +40,9 @@ namespace MeshViewer.Memory.Entities
                 // Iterate through the linked list until we find the correct GUID
                 while (Read<int>(maskOffset) != (int)objectGuid)
                 {
-                    var nextOffset = Game.Read<int>(0x9980B0 + 0x01C);
+                    var nextOffset = Game.Read<int>(0xC5D938 + 0x01C);
                     ptr = (int)objectGuid;
-                    ptr &= Game.Read<int>(0x9980B0 + 0x024);
+                    ptr &= Game.Read<int>(0xC5D938 + 0x024);
                     ptr += ptr * 2;
                     ptr = Read<int>(nextOffset + ptr * 4);
                     ptr += maskOffset;

@@ -7,7 +7,7 @@ namespace MeshViewer.Memory
     {
         // http://i.imgur.com/0hBzvZD.png
         // Script_GetPlayerFacing
-        public IntPtr BaseAddress => Game.Read<IntPtr>(Game.Read<IntPtr>(0xAD7A10) + 0x80D0, true);
+        public IntPtr BaseAddress => Game.Read<IntPtr>(Game.Read<IntPtr>(0xB7436C) + 0x7E20, true);
 
         public float X => Game.Read<float>(BaseAddress + 0x8, true);
         public float Y => Game.Read<float>(BaseAddress + 0xC, true);
